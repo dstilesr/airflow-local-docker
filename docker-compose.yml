@@ -7,6 +7,8 @@ services:
       - "3306:3306"
     env_file:
       - .env
+    volumes:
+      - "mysql-airflow-data:/var/lib/mysql"
   airflow-local:
     build: .
     container_name: airflow-local
@@ -15,5 +17,9 @@ services:
       - "8080:8080"
     env_file:
       - .env
+    volumes:
+      - "./airflow:/home/airflow_user/airflow/"
     depends_on:
       - "mysqldb"
+volumes:
+  mysql-airflow-data:

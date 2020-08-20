@@ -151,7 +151,10 @@ dmypy.json
 .idea/
 
 # Airflow Logs and Stuff
+airflow/logs
 **/*.log
 **/*.pid
 **/*.err
 **/*.out
+airflow/*.cfg
+airflow/dbcheck.txt

@@ -35,7 +35,11 @@ the Airflow. The SQLAlchemy URL must use the user, password, db already specifie
 The host is the MySQL container.
 
 ### Run with docker-compose
-To run with docker-compose just run
+First, you may want to create a docker volume to store the MySQL data using:
+```shell script
+docker volume create mysql-airflow-data
+```
+Then, to run with docker-compose just run
 ```shell script
 docker-compose up --build
 ```
