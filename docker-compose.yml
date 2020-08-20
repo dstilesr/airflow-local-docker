@@ -1,0 +1,19 @@
+version: "3"
+services:
+  mysqldb:
+    image: library/mysql:latest
+    container_name: mysqldb
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+  airflow-local:
+    build: .
+    container_name: airflow-local
+    restart: on-failure:10
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - "mysqldb"
