@@ -13,3 +13,7 @@ venv/
 
 # README
 *.md
+
+# Docker
+.dockerignore
+docker-compose.yml
