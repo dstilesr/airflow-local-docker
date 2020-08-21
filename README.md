@@ -44,7 +44,8 @@ Then, to run with docker-compose just run
 docker-compose up --build
 ```
 This will build a MySQL container to support the application as well as
-setup the airflow itself.
+setup the airflow itself. To view the admin in your browser, go to
+`http://localhost:8080/admin/`.
 
 ## Built With
 - [Docker](https://www.docker.com/)

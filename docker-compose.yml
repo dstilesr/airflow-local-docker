@@ -1,5 +1,6 @@
-version: "3"
+version: "2.4"
 services:
+  # MySQL
   mysqldb:
     image: library/mysql:latest
     container_name: mysqldb
@@ -9,10 +10,13 @@ services:
       - .env
     volumes:
       - "mysql-airflow-data:/var/lib/mysql"
+    mem_limit:  2G
+
+  # Airflow service
   airflow-local:
     build: .
     container_name: airflow-local
-    restart: on-failure:10
+    restart: on-failure
     ports:
       - "8080:8080"
     env_file:
@@ -21,5 +25,7 @@ services:
       - "./airflow:/home/airflow_user/airflow/"
     depends_on:
       - "mysqldb"
+    mem_limit: 4G
+
 volumes:
   mysql-airflow-data:
