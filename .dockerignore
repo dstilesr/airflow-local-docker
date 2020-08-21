@@ -1,0 +1,19 @@
+
+# Git
+.git/
+**.git*
+
+# ENV
+.env
+.venv
+venv/
+
+# Pycharm
+.idea/
+
+# README
+*.md
+
+# Docker
+.dockerignore
+docker-compose.yml
