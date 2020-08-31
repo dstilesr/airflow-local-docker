@@ -6,15 +6,11 @@ LABEL project=airflow-local-docker \
 
 EXPOSE 8080
 
-RUN useradd -m -d /home/airflow_user/ airflow_user \
-    && chown -R airflow_user: /home/airflow_user/
-
-WORKDIR /home/airflow_user
+WORKDIR /home/airflow_files
 
 COPY ./ .
 
 RUN pip install --no-cache-dir -r requirements.txt
-ENV AIRFLOW_HOME=/home/airflow_user/airflow
-#USER airflow_user
+ENV AIRFLOW_HOME=/home/airflow_files/airflow
 
 CMD bash start-airflow.sh
