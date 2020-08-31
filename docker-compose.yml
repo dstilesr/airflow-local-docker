@@ -29,3 +29,4 @@ services:
 
 volumes:
   mysql-airflow-data:
+    driver: local
