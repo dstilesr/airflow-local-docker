@@ -1,13 +1,16 @@
 #!/bin/bash
 
 # Initialize db
-if [ -f /home/airflow_user/airflow/dbcheck.txt ]
+if [ -f $(pwd)/airflow/dbcheck.txt ]
 then
   echo "DB ALREADY STARTED"
 else
+  # Wait for SQL to initialize
+  python wait_mysql.py
+
   echo "STARTING DB"
   airflow initdb
-  echo "INITIALIZED" > /home/airflow_user/airflow/dbcheck.txt
+  echo "INITIALIZED" > $(pwd)/airflow/dbcheck.txt
 fi
 
 # Cleanup old pid files

@@ -22,10 +22,11 @@ services:
     env_file:
       - .env
     volumes:
-      - "./airflow:/home/airflow_user/airflow/"
+      - "./airflow:/home/airflow_files/airflow/"
     depends_on:
       - "mysqldb"
     mem_limit: 4G
 
 volumes:
   mysql-airflow-data:
+    driver: local
