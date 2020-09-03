@@ -9,8 +9,8 @@ else
   python wait_mysql.py
 
   echo "STARTING DB"
-  airflow initdb
-  echo "INITIALIZED" > $(pwd)/airflow/dbcheck.txt
+  airflow initdb && \
+    echo "INITIALIZED" > $(pwd)/airflow/dbcheck.txt
 fi
 
 # Cleanup old pid files
