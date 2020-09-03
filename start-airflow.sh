@@ -5,6 +5,9 @@ if [ -f $(pwd)/airflow/dbcheck.txt ]
 then
   echo "DB ALREADY STARTED"
 else
+  # Wait for SQL to initialize
+  python wait_mysql.py
+
   echo "STARTING DB"
   airflow initdb
   echo "INITIALIZED" > $(pwd)/airflow/dbcheck.txt
