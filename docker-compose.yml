@@ -12,13 +12,13 @@ services:
       - "mysql-airflow-data:/var/lib/mysql"
     mem_limit:  2G
 
-  # Airflow service
-  airflow-local:
+  # Airflow Scheduler Service
+  airflow-scheduler:
     build: .
-    container_name: airflow-local
+    container_name: airflow-scheduler
     restart: on-failure
     ports:
-      - "8080:8080"
+      - "8090:8080"
     env_file:
       - .env
     volumes:
@@ -26,6 +26,21 @@ services:
     depends_on:
       - "mysqldb"
     mem_limit: 4G
+    command: "bash start-scheduler.sh"
+
+  # Airflow Webserver
+  airflow-webserver:
+    build: .
+    container_name: airflow-webserver
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - mysqldb
+      - airflow-scheduler
+    command: "bash start-server.sh"
 
 volumes:
   mysql-airflow-data:
