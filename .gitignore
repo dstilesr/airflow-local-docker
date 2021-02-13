@@ -158,3 +158,4 @@ airflow/logs
 **/*.out
 airflow/*.cfg
 airflow/dbcheck.txt
+airflow/webserver_config.py

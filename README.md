@@ -14,7 +14,6 @@ Airflow applications locally without much hassle regarding installation and setu
 Airflow.
 
 ## Use
-
 To use this project, first put your DAG definitions, plugins, etc. in the `airflow`
 folder.
 
@@ -25,8 +24,8 @@ MYSQL_ROOT_PASSWORD=
 MYSQL_DATABASE=
 MYSQL_USER=
 MYSQL_PASSWORD=
-AIRFLOW__CORE__SQL_ALCHEMY_CONN=
 AIRFLOW__CORE__EXECUTOR=LocalExecutor
+AIRFLOW_ADMIN_PW=
 ```
 The variables `MYSQL_ROOT_PASSWORD, MYSQL_PASSWORD, MYSQL_USER, MYSQL_DATABASE`
 are required to start the MySQL container, and 
